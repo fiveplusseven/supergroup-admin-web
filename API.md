@@ -1,5 +1,6 @@
 # API Doc
 ###  一些通用的错误码
+
 ``` golang
 // Unrecognized APP
 	Unrecognized = AppError{4000, "未知错误"}
@@ -41,7 +42,7 @@
 	AuthTokenParseError  = AppError{4003, "AuthTokenParseError"}
 	AuthTokenHeaderError = AppError{4003, "AuthTokenHeaderError"} // 不能分两段 scheme value
 	
-	```
+```
 
 ## oauth登录
 ### 1.1 用户登录
