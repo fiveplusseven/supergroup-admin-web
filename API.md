@@ -1,6 +1,5 @@
 # API Doc
 ###  一些通用的错误码
-
 ``` golang
 // Unrecognized APP
 	Unrecognized = AppError{4000, "未知错误"}
@@ -100,25 +99,15 @@ response:
             "keystore_file": "keystores/keystore-7000103163.json",
             "status": 0,
             "name": "本地测试群2",
-            "country_name": "cn"
-        },
-        {
-            "id": "7000103417",
-            "created_at": "2020-05-25T08:54:47+08:00",
-            "updated_at": "2020-07-22T09:50:36.379072+08:00",
-            "client_id": "2b72cd5d-a236-4fa5-af27-c3cb04ff2adb",
-            "keystore_file": "keystores/keystore-7000103417.json",
-            "status": 1,
-            "name": "大佬测试群"
-        },
-        {
-            "id": "7000101712",
-            "created_at": "2020-05-25T08:29:11+08:00",
-            "updated_at": "2020-07-22T09:50:34.322726+08:00",
-            "client_id": "f52bd230-145a-4db5-ae47-8a74859ec2dc",
-            "keystore_file": "keystores/keystore-7000101712.json",
-            "status": 0,
-            "name": "feicoin"
+            "country_name": "cn",
+            "group_mode": "",
+            "is_charge": true,
+            "member_count": 0,
+            "group_owner": {
+                "user_id": "",
+                "full_name": "",
+                "avatar": ""
+            }
         },
         {
             "id": "7000103413",
@@ -127,7 +116,15 @@ response:
             "client_id": "2827d81f-6ae0-4842-b92f-6576afe36863",
             "keystore_file": "keystores/keystore-7000103413.json",
             "status": 1,
-            "name": "dev tool"
+            "name": "dev tool",
+            "group_mode": "free",
+            "is_charge": true,
+            "member_count": 14,
+            "group_owner": {
+                "user_id": "a30bf8dd-e87f-4ff7-9da8-4abad6f3234e",
+                "full_name": "啊飞",
+                "avatar": "https://mixin-images.zeromesh.net/8cOzGhc5y1uIs1TYY7iapzTziZcLfzaDk-Gt1xw3r4XTZYFmnbUJEg9QIuf6_txuXEoEgZPNTiShP1cDIPb3xVuC9KGSL1s7OADo0A=s256"
+            }
         },
         {
             "id": "7000103418",
@@ -136,11 +133,47 @@ response:
             "client_id": "d41d106e-6d8e-43ae-a636-5127faffc479",
             "keystore_file": "keystores/keystore-7000103418.json",
             "status": 0,
-            "name": "韭菜收割群"
+            "name": "韭菜收割群",
+            "group_mode": "live",
+            "is_charge": false,
+            "member_count": 13,
+            "group_owner": {
+                "user_id": "a30bf8dd-e87f-4ff7-9da8-4abad6f3234e",
+                "full_name": "啊飞",
+                "avatar": "https://images.mixin.one/E2y0BnTopFK9qey0YI-8xV3M82kudNnTaGw0U5SU065864SsewNUo6fe9kDF1HIzVYhXqzws4lBZnLj1lPsjk-0=s128"
+            }
+        },
+        {
+            "id": "7000103417",
+            "created_at": "2020-05-25T08:54:47+08:00",
+            "updated_at": "2021-04-08T14:14:56.684329+08:00",
+            "client_id": "2b72cd5d-a236-4fa5-af27-c3cb04ff2adb",
+            "keystore_file": "keystores/keystore-7000103417.json",
+            "status": 1,
+            "name": "大佬测试群2",
+            "group_mode": "free",
+            "is_charge": true,
+            "member_count": 12,
+            "group_owner": {
+                "user_id": "a30bf8dd-e87f-4ff7-9da8-4abad6f3234e",
+                "full_name": "啊飞",
+                "avatar": "https://mixin-images.zeromesh.net/8cOzGhc5y1uIs1TYY7iapzTziZcLfzaDk-Gt1xw3r4XTZYFmnbUJEg9QIuf6_txuXEoEgZPNTiShP1cDIPb3xVuC9KGSL1s7OADo0A=s256"
+            }
         }
     ]
 }
 ```
+一些枚举值：
+
+| name       | value   | desc |
+|------------|---------|------|
+| group_mode | free    | 闲聊模式 |
+| group_mode | mute    | 禁言模式 |
+| group_mode | lecture | 授课中  |
+| group_mode | live    | 直播中  |
+| status     | 1       | 群开启  |
+| status     | 0       | 群关闭  |
+
 
 ### 2.2 获取群信息
 GET /v1/groups/:id
@@ -148,14 +181,22 @@ GET /v1/groups/:id
 response:
 ``` json
 {
-    "id": "7000103417",
-    "created_at": "2020-05-25T08:54:47+08:00",
-    "updated_at": "2020-07-22T09:50:36.379072+08:00",
-    "client_id": "2b72cd5d-a236-4fa5-af27-c3cb04ff2adb",
-    "keystore_file": "keystores/keystore-7000103417.json",
-    "status": 1,
-    "name": "大佬测试群"
-}
+            "id": "7000103413",
+            "created_at": "2020-05-25T08:54:47+08:00",
+            "updated_at": "2020-08-05T22:43:22.125042+08:00",
+            "client_id": "2827d81f-6ae0-4842-b92f-6576afe36863",
+            "keystore_file": "keystores/keystore-7000103413.json",
+            "status": 1,
+            "name": "dev tool",
+            "group_mode": "free",
+            "is_charge": true,
+            "member_count": 14,
+            "group_owner": {
+                "user_id": "a30bf8dd-e87f-4ff7-9da8-4abad6f3234e",
+                "full_name": "啊飞",
+                "avatar": "https://mixin-images.zeromesh.net/8cOzGhc5y1uIs1TYY7iapzTziZcLfzaDk-Gt1xw3r4XTZYFmnbUJEg9QIuf6_txuXEoEgZPNTiShP1cDIPb3xVuC9KGSL1s7OADo0A=s256"
+            }
+        }
 ```
 
 ### 2.3 创建群
