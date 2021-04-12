@@ -1,5 +1,10 @@
 # API Doc
-###  一些通用的错误码
+
+## API 地址
+* 测试环境： https://dev-courses-admin-api.firesbox.com
+* 正式环境： 暂无
+ 
+##  一些通用的错误码
 ``` golang
 // Unrecognized APP
 	Unrecognized = AppError{4000, "未知错误"}
