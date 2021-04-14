@@ -53,7 +53,7 @@
 * 用户登录采用 mixin app 授权方式登录
 * 当用户未登录或者token失效时，需要跳转到 mixin oauth 页面进行授权登录
 * mixin 授权页面：
-    * https://mixin-www.zeromesh.net/oauth/authorize?client_id=b7347ca4-186e-4e54-9db6-755a4ab0b5d4&scope=PROFILE:READ+PHONE:READ&response_type=code&return_to=
+    * https://mixin-www.zeromesh.net/oauth/authorize?client_id=f52bd230-145a-4db5-ae47-8a74859ec2dc&scope=PROFILE:READ+PHONE:READ&response_type=code&return_to=
 * 授权成功后会跳转至一个 callback页面(也就是机器人验证网址），需要开发者提供
 * callback页面会带上授权后的code，然后拿这个code，调用后端接口获取登录token 
 
